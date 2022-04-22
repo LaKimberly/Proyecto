@@ -106,7 +106,7 @@ trait ResetsPasswords
      */
     protected function resetPassword($user, $password)
     {
-        $this->setUserPassword($user, $password);
+        $this->setPassword($user, $password);
 
         $user->setRememberToken(Str::random(60));
 
@@ -124,7 +124,7 @@ trait ResetsPasswords
      * @param  string  $password
      * @return void
      */
-    protected function setUserPassword($user, $password)
+    protected function setPassword($user, $password)
     {
         $user->password = Hash::make($password);
     }
