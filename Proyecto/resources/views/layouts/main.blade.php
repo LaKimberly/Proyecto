@@ -65,5 +65,8 @@
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <!-- <script src="{{ asset('/js/material-dashboard.js?v=2.1.1') }}" type="text/javascript"></script> -->
         @stack('js')
+        <main class="py-4">
+            @yield('content')
+        </main>
     </body>
 </html>
