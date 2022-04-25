@@ -35,11 +35,11 @@ class AdministradorController extends Controller
      */
     public function store(Request $request)
     {
-        $administrador = new Administrador();
-        $administrador->email=$request['email'];
-        $administrador->password=$request['password'];
-        $administrador->save();
-        return redirect()->action('home');
+        Administrador::create($request->only('email')
+        + [
+            'password' => bcrypt($request->input('password')),
+        ]);
+        return redirect()->action([HomeController::class, 'index']);
     }
 
     /**

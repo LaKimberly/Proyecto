@@ -3,7 +3,7 @@
 <div class="container" style="height: auto;">
   <div class="row align-items-center">
     <div class="col-lg-4 col-md-6 col-sm-8 ml-auto mr-auto">
-      <form class="form" method="POST" action="{{ route('admin.register') }}">
+      <form class="form" method="POST" action="{{ route('admin.store') }}">
         @csrf
 
         <div class="card card-login card-hidden mb-3">

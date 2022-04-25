@@ -28,7 +28,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
-                      <i class="material-icons">map</i>
+                      <i class="material-icons">location_pin</i>
                   </span>
                 </div>
                 <input type="text" name="address" class="form-control" placeholder="{{ __('Address...') }}" value="{{ old('address') }}" required autocomplete="address" autofocus>
@@ -36,6 +36,36 @@
               @if ($errors->has('address'))
                 <div id="address-error" class="error text-danger pl-3" for="address" style="display: block;">
                   <strong>{{ $errors->first('address') }}</strong>
+                </div>
+              @endif
+            </div>
+            <div class="bmd-form-group{{ $errors->has('username') ? ' has-danger' : '' }} mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <i class="material-icons">face</i>
+                  </span>
+                </div>
+                <input type="text" name="username" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,48}" title="Los nombres no pueden contener números ni caracteres especiales" placeholder="{{ __('Name...') }}" value="{{ old('username') }}" required autocomplete="username" autofocus>
+              </div>
+              @if ($errors->has('username'))
+                <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                  <strong>{{ $errors->first('username') }}</strong>
+                </div>
+              @endif
+            </div>
+            <div class="bmd-form-group{{ $errors->has('phonenumber') ? ' has-danger' : '' }} mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <i class="material-icons">phone</i>
+                  </span>
+                </div>
+                <input type="tel" name="phonenumber" class="form-control" placeholder="{{ __('Phone number...') }}" pattern="(^(\+57)*(3)([0-2])([0-9])[0-9]{7}$)|(^(60)([0-8])[0-9]{7}$)" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" autofocus>
+              </div>
+              @if ($errors->has('phonenumber'))
+                <div id="phonenumber-error" class="error text-danger pl-3" for="phonenumber" style="display: block;">
+                  <strong>{{ $errors->first('phonenumber') }}</strong>
                 </div>
               @endif
             </div>
