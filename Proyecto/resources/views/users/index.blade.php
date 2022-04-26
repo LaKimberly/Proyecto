@@ -18,7 +18,7 @@
                                     </div>
                                     @endif
                                     <div class="row">
-                                        <div class="col-12 text-righ">
+                                        <div class="col-12 text-right">
                                             <a href="{{ route('user.create') }}" class="btn btn-sm btn-facebook">Añadir usuario</a>
                                         </div>
                                     </div>

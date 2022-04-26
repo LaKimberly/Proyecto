@@ -66,6 +66,7 @@ trait ConfirmsPasswords
      */
     protected function validationErrorMessages()
     {
-        return [];
+        return [
+        ];
     }
 }
