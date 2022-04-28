@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserEditRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -41,11 +43,30 @@ class UserController extends Controller
         //     'phonenumber' => 'required|min:10|max:13|unique:users',
         //     'email' => 'required|email|unique:users',
         //     'password' => 'required',
+        // // ]);
+        // $user = User::create($request->only('address', 'email', 'username', 'phonenumber')
+        // + [
+        //     'password' => bcrypt($request->input('passowrd')),
         // ]);
-        $user = User::create($request->only('address', 'email', 'username', 'phonenumber')
-        + [
-            'password' => bcrypt($request->input('passowrd')),
+
+        $data=request()->validate([
+            'address' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255'],
+            'phonenumber' => ['required', 'string', 'min:10','max:13'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:4', 'max:30'],
         ]);
+
+        $user = User::create([
+            'address' => $data['address'],
+            'username' => $data['username'],
+            'phonenumber' => $data['phonenumber'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        
+
         return redirect()->route('user.show', $user)->with('success', 'Usuario creado correctamente');
     }
 
