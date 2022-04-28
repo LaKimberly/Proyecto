@@ -34,4 +34,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('user.edit');
     Route::put('/user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::delete('/user/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
+
+    Route::resource('permissions', App\Http\Controllers\PermissionController::class );
+    Route::resource('roles', App\Http\Controllers\RoleController::class );
 });

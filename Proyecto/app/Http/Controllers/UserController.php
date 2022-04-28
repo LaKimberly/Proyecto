@@ -52,7 +52,7 @@ class UserController extends Controller
         $data=request()->validate([
             'address' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
-            'phonenumber' => ['required', 'string', 'min:10','max:13'],
+            'phonenumber' => ['required', 'string', 'min:10','max:13', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'max:30'],
         ]);
@@ -64,8 +64,6 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
-        
 
         return redirect()->route('user.show', $user)->with('success', 'Usuario creado correctamente');
     }
@@ -111,7 +109,7 @@ class UserController extends Controller
         // }
 
         $user->update($data);
-        return redirect()->route('user.show', $user)->with('success', 'Usuario actualizado correctamente');
+        return redirect()->route('user.index', $user)->with('success', 'Usuario actualizado correctamente');
     }
 
     /**

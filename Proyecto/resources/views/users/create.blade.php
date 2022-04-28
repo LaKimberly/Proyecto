@@ -69,6 +69,7 @@
                             </div>
                             <div class="card-footer ml-auto mr-auto">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
+                                <a href="{{ route('user.index')}}" class="btn btn-primary btn-success mr-3">Cancelar</a>
                             </div>
                         </div>
                     </div>
