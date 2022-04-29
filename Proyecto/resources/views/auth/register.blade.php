@@ -9,7 +9,7 @@
 
         <div class="card card-login card-hidden mb-3">
           <div class="card-header card-header-primary text-center">
-            <h4 class="card-title"><strong>{{ __('Register') }}</strong></h4>
+            <h4 class="card-title"><strong>{{ __('Registrarme') }}</strong></h4>
             <div class="social-line">
               <a href="#" class="btn btn-just-icon btn-link btn-white">
                 <i class="fa fa-facebook-square"></i>
@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="card-body ">
-            <p class="card-description text-center">{{ __('Or Be Classical') }}</p>
+            <p class="card-description text-center">{{ __('Ingrese sus datos') }}</p>
             <div class="bmd-form-group{{ $errors->has('address') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
@@ -31,7 +31,7 @@
                       <i class="material-icons">location_pin</i>
                   </span>
                 </div>
-                <input type="text" name="address" class="form-control" placeholder="{{ __('Address...') }}" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                <input type="text" name="address" class="form-control" placeholder="{{ __('Dirección...') }}" value="{{ old('address') }}" required autocomplete="address" autofocus>
               </div>
               @if ($errors->has('address'))
                 <div id="address-error" class="error text-danger pl-3" for="address" style="display: block;">
@@ -46,7 +46,9 @@
                       <i class="material-icons">face</i>
                   </span>
                 </div>
-                <input type="text" name="username" class="form-control" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,48}" title="Los nombres no pueden contener números ni caracteres especiales" placeholder="{{ __('Name...') }}" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                <input type="text" name="username" class="form-control" 
+                pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,48}" 
+                title="Los nombres no pueden contener números ni caracteres especiales" placeholder="{{ __('Nombre...') }}" value="{{ old('username') }}" required autocomplete="username" autofocus>
               </div>
               @if ($errors->has('username'))
                 <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
@@ -61,7 +63,7 @@
                       <i class="material-icons">phone</i>
                   </span>
                 </div>
-                <input type="tel" name="phonenumber" class="form-control" placeholder="{{ __('Phone number...') }}" pattern="(^(\+57)*(3)([0-2])([0-9])[0-9]{7}$)|(^(60)([0-8])[0-9]{7}$)" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" autofocus>
+                <input type="tel" name="phonenumber" class="form-control" placeholder="{{ __('Número de teléfono...') }}" pattern="(^(\+57)*(3)([0-2])([0-9])[0-9]{7}$)|(^(60)([0-8])[0-9]{7}$)" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" autofocus>
               </div>
               @if ($errors->has('phonenumber'))
                 <div id="phonenumber-error" class="error text-danger pl-3" for="phonenumber" style="display: block;">
@@ -91,7 +93,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password...') }}" required autocomplete="new-password" autofocus>
+                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Contraseña...') }}" required autocomplete="new-password" autofocus>
               </div>
               @if ($errors->has('password'))
                 <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -106,7 +108,7 @@
                     <i class="material-icons">lock_outline</i>
                   </span>
                 </div>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password...') }}" required autocomplete="new-password" autofocus>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirmar contraseña...') }}" required autocomplete="new-password" autofocus>
               </div>
               @if ($errors->has('password_confirmation'))
                 <div id="password_confirmation-error" class="error text-danger pl-3" for="password_confirmation" style="display: block;">
@@ -125,7 +127,7 @@
             </div>
           </div>
           <div class="card-footer justify-content-center">
-            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Create account') }}</button>
+            <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Crear cuenta') }}</button>
           </div>
         </div>
       </form>
