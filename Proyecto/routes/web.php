@@ -35,6 +35,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::put('/user/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('user.update');
     Route::delete('/user/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('user.delete');
 
+    Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    
+    Route::post('/profileUpdatePassword', [App\Http\Controllers\ProfileController::class, 'update_password'])->name('profile.update_password');
+
     Route::resource('permissions', App\Http\Controllers\PermissionController::class );
     Route::resource('roles', App\Http\Controllers\RoleController::class );
 });
