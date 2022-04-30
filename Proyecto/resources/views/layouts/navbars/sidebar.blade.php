@@ -41,16 +41,16 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'table' ? ' active' : '' }}">
+      <li class="nav-item{{ $activePage == 'Edite Product' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
+            <p>Persona</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
+        <a class="nav-link" href="{{route('product.index')}}">
           <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+            <p>Productos </p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
@@ -77,12 +77,12 @@
           <p>{{ __('RTL Support') }}</p>
         </a>
       </li>
-      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
+      <!-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link text-white bg-danger" href="#">
           <i class="material-icons text-white">unarchive</i>
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>
