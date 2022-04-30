@@ -30,7 +30,7 @@
                                                 <th>Dirección</th>
                                                 <th>Teléfono</th>
                                                 <th>Email</th>
-                                                <th>Created_at</th>
+                                                <th>Roles</th>
                                                 <th class="text-right">Acciones</th>
                                             </thead>
                                             <tbody>
@@ -41,7 +41,13 @@
                                                     <td>{{ $user->address}}</td>
                                                     <td>{{ $user->phonenumber}}</td>
                                                     <td>{{ $user->email}}</td>
-                                                    <td>{{ $user->created_at}}</td>
+                                                    <td>
+                                                        @forelse($user->roles as $role)
+                                                            <span class="badge badge-info">{{ $role->name }}</span>
+                                                        @empty
+                                                            <span class="badge badge-danger">No roles</span>
+                                                        @endforelse
+                                                    </td>
                                                     <td class="td-actions text-right">
                                                     <a href="{{ route('user.show', $user->id)}}" class="btn btn-info"><i class="material-icons">person</i></a>
                                                     <a href="{{ route('user.edit', $user->id)}}" class="btn btn-warning"><i class="material-icons">edit</i></a>

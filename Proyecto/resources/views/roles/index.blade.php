@@ -19,7 +19,9 @@
                                 @endif
                                 <div class="row">
                                     <div class="col-12 text-right">
+                                        @can('role_create')
                                         <a href="{{ route('roles.create') }}" class="btn btn-sm btn-facebook">Añadir rol</a>
+                                        @endcan
                                     </div>
                                 </div>
                                 <div class="table-responsive">
@@ -29,7 +31,7 @@
                                             <th>Nombre</th>
                                             <th>Guard</th>
                                             <th>Fecha de creación</th>
-                                            <th>Roles</th>
+                                            <th>Permisos</th>
                                             <th class="text-right">Acciones</th>
                                         </thead>
                                         <tbody>
@@ -47,18 +49,24 @@
                                                 @endforelse
                                                 </td>
                                                 <td class="td-actions text-right">
-                                                <a href="{{ route('roles.edit', $role->id)}}" class="btn btn-warning"><i class="material-icons">edit</i></a>
+                                                    @can('role_edit')
+                                                    <a href="{{ route('roles.edit', $role->id)}}" class="btn btn-warning"><i class="material-icons">edit</i></a>
+                                                    @endcan
+                                                @can('role_destroy')
                                                 <form action="{{ route('roles.destroy', $role->id)}}" method="POST" style="display: inline-block" onsubmit="return confirm('¿Seguro que quieres eliminar el rol de {{$role->name}}?')">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="btn btn-danger" type="submit">
                                                         <i class="material-icons">close</i>
                                                     </button>
-                                                </form>  
+                                                </form> 
+                                                @endcan 
                                                 </td>
                                             </tr>
                                             @empty
-                                            No hay roles registrados
+                                            <tr>
+                                                <td colspan="2">Sin registros.</td>
+                                            </tr>
                                             @endforelse
                                         </tbody>
                                     </table>

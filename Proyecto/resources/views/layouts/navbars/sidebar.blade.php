@@ -5,7 +5,7 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
+    <a href="{{ route('home') }}" class="simple-text logo-normal">
       {{ __('Apetitos') }}
     </a>
   </div>
@@ -17,6 +17,7 @@
             <p>{{ __('Dashboard') }}</p>
         </a>
       </li>
+      @can('permission_index')
       <li class="nav-item {{ ($activePage == 'permissions' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#credenciales" aria-expanded="true">
           <i class="material-icons">fingerprint</i>
@@ -43,12 +44,15 @@
           </ul>
         </div>
       </li>
+      @endcan
+      @can('user_index')
       <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('user.index') }}">
           <i class="material-icons">content_paste</i>
             <p>Usuarios</p>
         </a>
       </li>
+      @endcan
       <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">library_books</i>

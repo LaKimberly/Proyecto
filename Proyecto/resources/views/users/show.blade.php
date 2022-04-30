@@ -25,6 +25,12 @@
                                                      {{$user->address}} <br>
                                                      {{$user->phonenumber}} <br>
                                                      {{$user->email}} <br>
+                                                        @forelse($user->roles as $role)
+                                                            <span class="badge badge-info">{{ $role->name }}</span>
+                                                        @empty
+                                                            <span class="badge badge-danger">No roles</span>
+                                                        @endforelse
+                                                     <br>
                                                      Creado: {{$user->created_at}} <br>
                                                      Actualizado: {{$user->updated_at}} <br>
                                                 </p>                                                

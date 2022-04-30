@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserEditRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -17,6 +19,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        abort_if(Gate::denies('user_index'), 403);
         $users = User::paginate(5);
         return view('users.index', compact('users'));
     }
@@ -27,7 +30,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('users.create');
+        abort_if(Gate::denies('user_create'), 403);
+        $roles = Role::all()->pluck('name', 'id');
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -48,7 +53,6 @@ class UserController extends Controller
         // + [
         //     'password' => bcrypt($request->input('passowrd')),
         // ]);
-
         $data=request()->validate([
             'address' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255'],
@@ -64,7 +68,8 @@ class UserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-
+        $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
         return redirect()->route('user.show', $user)->with('success', 'Usuario creado correctamente');
     }
 
@@ -75,6 +80,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(User $user){
+        
+        abort_if(Gate::denies('user_show'), 403);
+        $user->load('roles');
         return view('users.show', compact('user'));
     }
 
@@ -85,7 +93,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(User $user){
-        return view('users.edit', compact('user'));
+        
+        abort_if(Gate::denies('user_edit'), 403);
+        $roles = Role::all()->pluck('name', 'id');
+        $user->load('roles');
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -109,6 +121,8 @@ class UserController extends Controller
         // }
 
         $user->update($data);
+        $roles = $request->input('roles', []);
+        $user->syncRoles($roles);
         return redirect()->route('user.index', $user)->with('success', 'Usuario actualizado correctamente');
     }
 
@@ -119,6 +133,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(User $user){
+        
+        abort_if(Gate::denies('user_destroy'), 403);
+        if(auth()->user()->id == $user->id){
+            return redirect()->route('home');
+        }
         $user->delete();
         return back()->with('success', 'Usuario eliminado correctamente');
     }
