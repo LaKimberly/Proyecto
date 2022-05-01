@@ -12,17 +12,23 @@
                                         <div class="item col-xs-4 col-lg-4 ">
                                             <div class="card" style="width: 15rem;">
                                                 <img class="card-img-top" src="/storage/{{ $product->img }}"
-                                                    alt="Card image cap" class="avatar" width="500">
+                                                    alt="Card image cap" class="avatar" width="500" height="200">
                                                 <div class="card-body">
                                                     <p class="card-text">
                                                         Precio: $ {{ $product->productPrice }}<br>
                                                         Calificacion: {{ $product->productQualication }}
                                                     </p>
                                                 </div>
-                                                {{--  {{ route('product.carrito', $product->id) }} --}}
-                                                <a href="#"
-                                                    class="btn btn-warning"> <i class="material-icons">Agregarshopping_cart</i>
-                                                </a>
+                                                <div class="item col-xs-4 col-lg-4 ">
+                                                    {{-- {{ route('product.carrito', $product->id) }} --}}
+                                                    <a href="#" class="btn btn-warning"> <i class="material-icons"></i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-warning"> <i
+                                                            class="material-icons">Agregarshopping_cart</i>
+                                                    </a>
+                                                    <a href="#" class="btn btn-warning"> <i class="material-icons">add</i>
+                                                    </a>
+                                                </div>
                                             </div>
 
 
