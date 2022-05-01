@@ -13,17 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin/create', [App\Http\Controllers\AdministradorController::class, 'create']);
-Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.store');
-
 //users
 
 Route::group(['middleware' => 'auth'], function(){
