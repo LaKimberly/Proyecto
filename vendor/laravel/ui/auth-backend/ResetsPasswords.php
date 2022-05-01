@@ -81,7 +81,8 @@ trait ResetsPasswords
      */
     protected function validationErrorMessages()
     {
-        return [];
+        return [
+        ];
     }
 
     /**

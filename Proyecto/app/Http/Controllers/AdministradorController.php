@@ -33,13 +33,13 @@ class AdministradorController extends Controller
      * @param  array  $data
      * @return \App\Models\Administrador
      */
-    protected function create(array $data)
-    {
-        return Administrador::create([
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
-    }
+    // protected function create(array $data)
+    // {
+    //     return Administrador::create([
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+    // }
 
 
 
@@ -118,6 +118,6 @@ class AdministradorController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-     
+
 
 }

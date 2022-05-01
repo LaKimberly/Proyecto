@@ -5,80 +5,86 @@
 
       Tip 2: you can also add an image using data-image tag
   -->
-    <div class="logo">
-        <a href="https://creative-tim.com/" class="simple-text logo-normal">
-            {{ __('Creative Tim') }}
+  <div class="logo">
+    <a href="{{ route('home') }}" class="simple-text logo-normal">
+      {{ __('Apetitos') }}
+    </a>
+  </div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('home') }}">
+          <i class="material-icons">dashboard</i>
+            <p>{{ __('Dashboard') }}</p>
         </a>
-    </div>
-    <div class="sidebar-wrapper">
-        <ul class="nav">
-            <li class="nav-item{{ $activePage == 'menu' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('product.menu') }}">
-                    <i class="material-icons">restaurant_menu</i>
-                    <p>{{ __('Menu') }}</p>
-                </a>
+      </li>
+      @can('permission_index')
+      <li class="nav-item {{ ($activePage == 'permissions' || $activePage == 'user-management') ? ' active' : '' }}">
+        <a class="nav-link" data-toggle="collapse" href="#credenciales" aria-expanded="true">
+          <i class="material-icons">fingerprint</i>
+          <p>{{ __('Credenciales') }}
+            <b class="caret"></b>
+          </p>
+        </a>
+        <div class="collapse show" id="credenciales">
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'permissions' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('permissions.index') }}">
+              <i class="material-icons">engineering</i>
+                <span class="sidebar-normal">Permisos</span>
+              </a>
             </li>
-            <li class="nav-item {{ $activePage == 'profile' || $activePage == 'user-management' ? ' active' : '' }}">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-                    <i><img style="width:25px" src="{{ asset('/img/laravel.svg') }}"></i>
-                    <p>{{ __('Laravel Examples') }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse show" id="laravelExample">
-                    <ul class="nav">
-                        <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
-                                <span class="sidebar-mini"> UP </span>
-                                <span class="sidebar-normal">{{ __('User profile') }} </span>
-                            </a>
-                        </li>
-                        <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-                            <a class="nav-link" href="#">
-                                <span class="sidebar-mini"> UM </span>
-                                <span class="sidebar-normal"> {{ __('User Management') }} </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+          </ul>
+          <ul class="nav">
+            <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('roles.index') }}">
+              <i class="material-icons">manage_accounts</i>
+                <span class="sidebar-normal">Roles</span>
+              </a>
             </li>
-            <li class="nav-item{{ $activePage == 'persona' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">content_paste</i>
-                    <p>Persona</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('product.index') }}">
-                    <i class="material-icons">library_books</i>
-                    <p>Productos </p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>{{ __('Icons') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">location_ons</i>
-                    <p>{{ __('Maps') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">notifications</i>
-                    <p>{{ __('Notifications') }}</p>
-                </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
-                <a class="nav-link" href="#">
-                    <i class="material-icons">language</i>
-                    <p>{{ __('RTL Support') }}</p>
-                </a>
-            </li>
-            <!-- <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
+          </ul>
+        </div>
+      </li>
+      @endcan
+      @can('user_index')
+      <li class="nav-item{{ $activePage == 'users' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('user.index') }}">
+          <i class="material-icons">content_paste</i>
+            <p>Usuarios</p>
+        </a>
+      </li>
+      @endcan
+      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">library_books</i>
+            <p>{{ __('Typography') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">bubble_chart</i>
+          <p>{{ __('Icons') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">location_ons</i>
+            <p>{{ __('Maps') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'notifications' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">notifications</i>
+          <p>{{ __('Notifications') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
+        <a class="nav-link" href="#">
+          <i class="material-icons">language</i>
+          <p>{{ __('RTL Support') }}</p>
+        </a>
+      </li>
+      <li class="nav-item active-pro{{ $activePage == 'upgrade' ? ' active' : '' }}">
         <a class="nav-link text-white bg-danger" href="#">
           <i class="material-icons text-white">unarchive</i>
           <p>{{ __('Upgrade to PRO') }}</p>
