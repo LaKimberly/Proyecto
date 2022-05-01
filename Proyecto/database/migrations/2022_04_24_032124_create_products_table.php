@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('productPrice')->required();
             $table->string('ProductDescription');
             $table->integer('productQualication');
+            $table->string('img');
             $table->timestamps();
         });
     }

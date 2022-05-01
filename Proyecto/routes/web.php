@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+//Normal
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -24,15 +24,15 @@ Route::get('/persons/create', [App\Http\Controllers\PersonController::class, 'cr
 Route::get('/admin/create', [App\Http\Controllers\AdministradorController::class, 'create']);
 Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.register');
 
-// Producto 
-// crear 
+// Producto
+// crear
 Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
 Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.register');
 
-// ver 
+// ver
 Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
 
-//editar  
+//editar
 Route::get('/product/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
 
 // show
@@ -42,6 +42,12 @@ Route::get('/product/{product}', [App\Http\Controllers\ProductController::class,
 Route::put('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 
 
-// Eliminar 
+// Eliminar
 Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+
+// menu
+Route::get('/menu', [App\Http\Controllers\ProductController::class, 'menu'])->name('product.menu');
+
+// carrito
+Route::get('/carrito', [App\Http\Controllers\ProductController::class, 'carrito'])->name('product.carrito');
 

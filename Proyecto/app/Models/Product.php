@@ -18,6 +18,7 @@ class Product extends Model
         'productPrice',
         'ProductDescription',
         'productQualication',
+        'image'
         
     ];
 }

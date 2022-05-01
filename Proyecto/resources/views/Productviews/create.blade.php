@@ -4,7 +4,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
-        <form action=" {{route('product.register')}} " method="post" class="form-horizontal">
+        <form action=" {{route('product.register')}} " method="POST" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="card">
           <div class="card-header card-header-primary">
@@ -43,6 +43,12 @@
               <label for="name" class="col -sm-2 col-form-label">Calificacion del Producto </label>
               <div class="col-sm-7">
               <input type="text" name="productQualication" class="form-control" placeholder="{{ __('Calificacion del Producto...') }}" value="{{ old('productQualication') }}" pattern="[0-5]" title="Una calificación válida va de 0 a 5" required autocomplete="productQualication" autofocus>
+              </div>
+            </div>
+            <div class="row">
+              <label for="imagenes" class="col -sm-2 col-form-label">Imagenes de los Productos nicolas</label>
+              <div class="col-sm-7">
+              <input type="file" id="imagenes" name="imagenes" class="form-control" placeholder="{{ __('Imagen del Producto...') }}">
               </div>
             </div>
           </div>
