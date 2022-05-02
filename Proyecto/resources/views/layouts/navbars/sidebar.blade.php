@@ -54,12 +54,14 @@
         </a>
       </li>
       @endcan
+      @can('product_index')
       <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
         <a class="nav-link" href="/product/index">
           <i class="material-icons">inventory</i>
             <p>{{ __('Productos') }}</p>
         </a>
       </li>
+      @endcan
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>
@@ -89,7 +91,7 @@
           <i class="material-icons text-white">unarchive</i>
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
-      </li> -->
+      </li>
         </ul>
     </div>
 </div>
