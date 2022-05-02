@@ -18,7 +18,9 @@
                         <div class="table-responsive">
                         <div class="row">
                             <div class="col-12 text-right ">
+                                @can('product_create')
                                 <a href="{{route('product.create')}}" class="btn btn-facebook">Añadir Producto</a>
+                                @endcan
                             </div>
                         </div>
                             <table class="table">
@@ -35,15 +37,21 @@
                                         <td>{{$product-> productName }}</td>
                                         <td>{{$product-> productPrice }}</td>
                                         <td class="td-actions text-centered">
+                                            @can('product_show')
                                                <a href="{{ route('product.show', $product->id) }}" class="btn btn-info"> <i class="material-icons">person</i> </a>
+                                            @endcan
+                                            @can('product_edit')
                                                <a href="{{ route('product.edit', $product->id) }}" class="btn btn-warning"> <i class="material-icons">edit</i> </a>
+                                            @endcan
+                                            @can('product_destroy')
                                             <form action="{{ route('product.delete', $product->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Esta seguro que desea Eliminar este producto')">
                                                  @csrf
                                                   @method('DELETE')
-                                                 <button class=" btn btn-danger" type="submit" rel="tooltip">
+                                                <button class=" btn btn-danger" type="submit" rel="tooltip">
                                                  <i class="material-icons">close</i>
-                                                 </button>
-                                             </form>
+                                                </button>
+                                            </form>
+                                            @endcan
                                         </td>
                                     </tr>
                                     @endforeach

@@ -21,24 +21,9 @@ Auth::routes();
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-// Route::get('/admin/create', [App\Http\Controllers\AdministradorController::class, 'create']);
-// Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.register');
-
-
-// Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.store');
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Auth::routes();
-
-// menu
 Route::get('/menu', [App\Http\Controllers\ProductController::class, 'menu'])->name('product.menu');
-
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//users
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
@@ -57,32 +42,21 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('permissions', App\Http\Controllers\PermissionController::class );
     Route::resource('roles', App\Http\Controllers\RoleController::class );
 
-
 // Producto
-// crear
-Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
-Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.register');
-
-// ver
-Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
-
-//editar
-Route::get('/product/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
-
-// show
-Route::get('/product/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-
-// Actualizar
-Route::put('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
-
-
-// Eliminar
-Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
-
-
-
-// carrito
-Route::get('/carrito', [App\Http\Controllers\ProductController::class, 'carrito'])->name('product.carrito');
-
+    // crear
+    Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.register');
+    // ver
+    Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+    //editar
+    Route::get('/product/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
+    // show
+    Route::get('/product/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+    // Actualizar
+    Route::put('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
+    // Eliminar
+    Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+    // carrito
+    Route::get('/carrito', [App\Http\Controllers\ProductController::class, 'carrito'])->name('product.carrito');
 
 });

@@ -1,56 +1,42 @@
 @extends('layouts.main', [ 'activePage' => 'menu', 'titlePage' => __('Productos')])
 @section('content')
-    <div class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="panel-body">
-                                <div class="row">
-                                    @foreach ($products as $product)
-                                        <div class="item col-xs-4 col-lg-4 ">
-                                            <div class="card" style="width: 15rem;">
-                                                <img class="card-img-top" src="/storage/{{ $product->img }}"
-                                                    alt="Card image cap" class="avatar" width="500" height="200">
-                                                <div class="card-body">
-                                                    <p class="card-text">
-                                                        Precio: $ {{ $product->productPrice }}<br>
-                                                        Calificacion: {{ $product->productQualication }}
-                                                    </p>
-                                                </div>
-                                                <div class="item col-xs-4">
-                                                    {{-- {{ route('product.carrito', $product->id) }} --}}
-                                                    <a href="#" class="btn btn-warning"> <i
-                                                            class="material-icons">remove</i>
-
-                                                        <a href="#" class="btn btn-warning"> <i
-                                                                class="material-icons">shopping_cart</i>
-
-                                                            <a href="#" class="btn btn-warning"> <i
-                                                                    class="material-icons">add</i>
-                                                            </a>
-                                                </div>
-                                            </div>
-
-
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                @foreach ($products as $product)
+                                <div class="item col-xs-4 col-lg-4 ">
+                                    <div class="card" style="width: 15rem;">
+                                        <img class="card-img-top" src="/storage/{{ $product->img }}" alt="Card image cap" class="avatar" width="500" height="200">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                Precio: $ {{ $product->productPrice }}<br>
+                                                Calificacion: {{ $product->productQualication }}
+                                            </p>
                                         </div>
-                                    @endforeach
+                                        <div class="item col-xs-4">
+                                            {{-- {{ route('product.carrito', $product->id) }} --}}
+                                            <a href="#" class="btn btn-warning"> <i class="material-icons">remove</i>
+                                                <a href="#" class="btn btn-warning"> <i class="material-icons">shopping_cart</i>
+                                                    <a href="#" class="btn btn-warning"> <i class="material-icons">add</i></a>
+                                        </div>
+                                    </div>
                                 </div>
+                                @endforeach
                             </div>
-
                         </div>
-
                     </div>
-
-                    <div class="card-footer mr-auto">
-                        {{ $products->links() }}
-
-
-                    </div>
+                </div>
+                <div class="card-footer mr-auto">
+                    {{ $products->links() }}
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
 @endsection
