@@ -19,7 +19,7 @@
                                                         Calificacion: {{ $product->productQualication }}
                                                     </p>
                                                 </div>
-                                                <div class="item col-xs-4 col-lg-4 ">
+                                                <div class="item col-xs-4">
                                                     {{-- {{ route('product.carrito', $product->id) }} --}}
                                                     <a href="#" class="btn btn-warning"> <i
                                                             class="material-icons">remove</i>
