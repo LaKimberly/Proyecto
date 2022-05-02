@@ -23,7 +23,7 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="{{ route('product.menu') }}">
-            <i class="material-icons">dashboard</i>
+            <i class="material-icons">restaurant_menu</i>
             <p class="d-lg-none d-md-block">
               {{ __('Stats') }}
             </p>

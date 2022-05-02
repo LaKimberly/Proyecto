@@ -21,13 +21,15 @@
                                                 </div>
                                                 <div class="item col-xs-4 col-lg-4 ">
                                                     {{-- {{ route('product.carrito', $product->id) }} --}}
-                                                    <a href="#" class="btn btn-warning"> <i class="material-icons"></i>
-                                                    </a>
                                                     <a href="#" class="btn btn-warning"> <i
-                                                            class="material-icons">Agregarshopping_cart</i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-warning"> <i class="material-icons">add</i>
-                                                    </a>
+                                                            class="material-icons">remove</i>
+
+                                                        <a href="#" class="btn btn-warning"> <i
+                                                                class="material-icons">shopping_cart</i>
+
+                                                            <a href="#" class="btn btn-warning"> <i
+                                                                    class="material-icons">add</i>
+                                                            </a>
                                                 </div>
                                             </div>
 

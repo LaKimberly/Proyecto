@@ -118,13 +118,18 @@
             </div>
             <div class="form-check mr-auto ml-3 mt-3">
               <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="policy" name="policy" {{ old('policy', 1) ? 'checked' : '' }} >
+                <input class="form-check-input" type="checkbox" id="policy" name="policy" {{ old('policy', 1) ? 'checked' : '' }} required>
                 <span class="form-check-sign">
                   <span class="check"></span>
                 </span>
                 {{ __('I agree with the ') }} <a href="#">{{ __('Privacy Policy') }}</a>
               </label>
             </div>
+            @if ($errors->has('policy'))
+                <div id="policy-error" class="error text-danger pl-3" for="policy" style="display: block;">
+                  <strong>{{ $errors->first('policy') }}</strong>
+                </div>
+              @endif
           </div>
           <div class="card-footer justify-content-center">
             <button type="submit" class="btn btn-primary btn-link btn-lg">{{ __('Crear cuenta') }}</button>
