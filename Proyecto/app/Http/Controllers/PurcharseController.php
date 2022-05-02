@@ -15,6 +15,7 @@ class PurcharseController extends Controller
     public function index()
     {
         //
+        dd('entro');
     }
 
     /**

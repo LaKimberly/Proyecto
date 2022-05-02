@@ -22,10 +22,27 @@ class AdministradorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('Adminviews.create');
-    }
+    // public function create()
+    // {
+    //     return view('Adminviews.create');
+    // }
+
+/**
+     * Create a new Administrador instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\Models\Administrador
+     */
+    // protected function create(array $data)
+    // {
+    //     return Administrador::create([
+    //         'email' => $data['email'],
+    //         'password' => Hash::make($data['password']),
+    //     ]);
+    // }
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -35,10 +52,11 @@ class AdministradorController extends Controller
      */
     public function store(Request $request)
     {
-        Administrador::create($request->only('email')
-        + [
-            'password' => bcrypt($request->input('password')),
-        ]);
+        $administrador = new Administrador();
+        $administrador->email=$request['email'];
+        $administrador->password=$request['password'];
+        $administrador->save();
+
         return redirect()->action([HomeController::class, 'index']);
     }
 
@@ -86,4 +104,20 @@ class AdministradorController extends Controller
     {
         //
     }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+    }
+
+
 }
