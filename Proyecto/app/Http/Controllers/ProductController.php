@@ -41,34 +41,13 @@ class ProductController extends Controller
      */
     public function store(ProductCreateRequest $request)
     {
-
-        //  $validator = validator::make($request->all(),[
-        //      // 'productName' => 'required|productName|unique:products|min:4|max:30|unique:products',
-        //      'productName' => 'required|productName|unique:products',
-        //      'productPrice' => 'required',
-        //      // 'ProductDescription' => '',
-        //      // 'productQualication' => '',
-        //      'img' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        //  ]);
-        //  if($validator ->fails()){
-        //      return back()
-        //      ->withInput()
-        //      ->with('ErrorInsert','Favor de llenar los datos correctamente')
-        //      ->withErrors($validator);
-        //  }
-        //  else{
-
-            // $imagen = $request -> hasFile('img');
-            //  $nombre= time().'.'.$imagen->getClientOriginalExtension();
-
-             $ruta_imagen = $request['imagenes']->store('productos', 'public');
-
-
+             
              $product = new Product();
              $product->productName=$request['productName'];
              $product->productPrice=$request['productPrice'];
              $product->ProductDescription=$request['ProductDescription'];
              $product->productQualication=$request['productQualication'];
+             $ruta_imagen = $request['imagenes']->store('productos', 'public');
              $product->img=$ruta_imagen;
              $product->save();
              return redirect()-> route('product.show', $product->id)->with('success', ' Su producto fue creado correctamente');
@@ -146,14 +125,14 @@ class ProductController extends Controller
     public function menu()
     {
        $products = Product::paginate(6);
-        return view('Productviews.menu', compact('products'));
+        return view('cart.menu', compact('products'));
     }
 
 
     public function carrito(Product $product)
     {
         // $products = Product::paginate(6);
-        return view('Productviews.carrito', compact('product'));
+        return view('cart.carrito', compact('product'));
     }
 
 }

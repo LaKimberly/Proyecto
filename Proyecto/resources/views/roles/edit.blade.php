@@ -47,7 +47,7 @@
                                 </div>
                               </td>
                               <td>
-                                {{ $permission }}
+                                {{ $permission}}
                               </td>
                             </tr>
                             @endforeach

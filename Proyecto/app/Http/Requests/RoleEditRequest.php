@@ -25,7 +25,8 @@ class RoleEditRequest extends FormRequest
     {
         $role = $this->route('role');
         return [
-            'name' => 'required|max:90|min:3|unique:roles,name,' . $role->id,
+            'name' => 'required|max:90|min:3|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð _]+$/|
+            unique:roles,name,' . $role->id,
         ];
     }
 
@@ -35,6 +36,7 @@ class RoleEditRequest extends FormRequest
             'name.min' => 'El campo Nombre debe tener al menos 3 caracteres.',
             'name.max' => 'El campo Nombre debe ser menor que 90 caracteres.',
             'name.unique' => 'Este Nombre ya está siendo utilizado. Por favor ingrese uno diferente',
+            'name.regex' => 'El formato del campo nombre no es válido.',
         ];
     }
 }

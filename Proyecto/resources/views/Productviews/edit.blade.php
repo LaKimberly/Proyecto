@@ -15,12 +15,20 @@
                                 <p class="card-category"></p>
                             </div>
                             <div class="card-body">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error )
+                                        <li>{{ $error }} </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
                                 <div class="row">
                                     <label for="name" class="col -sm-2 col-form-label">Nombre del Producto </label>
                                     <div class="col-sm-7">
                                         <input type="text" name="productName" class="form-control"
                                             value="{{ $product->productName }}"
-                                            pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{4,48}"
                                             title="El nombre de un producto debe contener entre 4 y 48 caracteres, no puede contener números ni caracteres especiales"
                                             required autocomplete="productName" autofocus>
                                     </div>
@@ -29,7 +37,7 @@
                                     <label for="name" class="col -sm-2 col-form-label">Precio del Producto </label>
                                     <div class="col-sm-7">
                                         <input type="text" name="productPrice" class="form-control"
-                                            value="{{ $product->productPrice }}" pattern="([1-9])[0-9]{2,4}$"
+                                            value="{{ $product->productPrice }}"
                                             title="Ingrese un precio tal que 100 sea el mínimo" required
                                             autocomplete="productPrice" autofocus>
                                     </div>
@@ -46,16 +54,15 @@
                                     <label for="name" class="col -sm-2 col-form-label">Calificacion del Producto </label>
                                     <div class="col-sm-7">
                                         <input type="text" name="productQualication" class="form-control"
-                                            value="{{ $product->productQualication }}" pattern="[0-5]"
+                                            value="{{ $product->productQualication }}"
                                             title="Una calificación válida va de 0 a 5" required
                                             autocomplete="productQualication" autofocus>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label for="imagenes" class="col -sm-2 col-form-label">Imagenes de los Productos
-                                        nicolas</label>
+                                    <label for="imagenes" class="col -sm-2 col-form-label">Imagenes de los Productos</label>
                                     <div class="col-sm-7">
-                                        <input type="file" id="imagenes" name="imagenes" class="form-control"
+                                        <input type="file" id="imagenes" name="imagenes" class="form-control" accept="image/*"
                                             placeholder="{{ __('Imagen del Producto...') }}">
                                     </div><br><br>
                                 </div>

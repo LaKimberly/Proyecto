@@ -7,7 +7,8 @@
   -->
   <div class="logo">
     <a href="{{ route('home') }}" class="simple-text logo-normal">
-      {{ __('Apetitos') }}
+    <img class="logo-normal" src="/img/logo.png" class="avatar" width="40" height="40">
+    {{ __('Apetitos') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -62,7 +63,7 @@
         </a>
       </li>
       @endcan
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+      <!-- <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Icons') }}</p>
@@ -79,8 +80,8 @@
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
+      </li> -->
+      <!-- <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">language</i>
           <p>{{ __('RTL Support') }}</p>
@@ -91,7 +92,7 @@
           <i class="material-icons text-white">unarchive</i>
           <p>{{ __('Upgrade to PRO') }}</p>
         </a>
-      </li>
+      </li> -->
         </ul>
     </div>
 </div>

@@ -24,13 +24,13 @@
             <div class="row">
               <label for="name" class="col -sm-2 col-form-label">Nombre del Producto </label>
               <div class="col-sm-7">
-              <input type="text" name="productName" class="form-control" placeholder="{{ __('Nombre del Producto...') }}" value="{{ old('productName') }}" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{4,48}" title="El nombre de un producto debe contener entre 4 y 48 caracteres, no puede contener números ni caracteres especiales" required autocomplete="productName" autofocus>
+              <input type="text" name="productName" class="form-control" placeholder="{{ __('Nombre del Producto...') }}" value="{{ old('productName') }}" title="El nombre de un producto debe contener entre 4 y 48 caracteres, no puede contener números ni caracteres especiales" required autocomplete="productName" autofocus>
               </div>
             </div>
             <div class="row">
               <label for="name" class="col -sm-2 col-form-label">Precio del Producto </label>
               <div class="col-sm-7">
-              <input type="text" name="productPrice" class="form-control" placeholder="{{ __('Precio del Producto...') }}" value="{{ old('productPrice') }}" pattern="([1-9])[0-9]{2,4}$" title="Ingrese un precio tal que 100 sea el mínimo" required autocomplete="productPrice" autofocus>
+              <input type="text" name="productPrice" class="form-control" placeholder="{{ __('Precio del Producto...') }}" value="{{ old('productPrice') }}" title="Ingrese un precio tal que 100 sea el mínimo" required autocomplete="productPrice" autofocus>
               </div>
             </div>
             <div class="row">
@@ -42,13 +42,13 @@
             <div class="row">
               <label for="name" class="col -sm-2 col-form-label">Calificacion del Producto </label>
               <div class="col-sm-7">
-              <input type="text" name="productQualication" class="form-control" placeholder="{{ __('Calificacion del Producto...') }}" value="{{ old('productQualication') }}" pattern="[0-5]" title="Una calificación válida va de 0 a 5" required autocomplete="productQualication" autofocus>
+              <input type="text" name="productQualication" class="form-control" placeholder="{{ __('Calificacion del Producto...') }}" value="{{ old('productQualication') }}" title="Una calificación válida va de 0 a 5" required autocomplete="productQualication" autofocus>
               </div>
             </div>
             <div class="row">
-              <label for="imagenes" class="col -sm-2 col-form-label">Imagenes de los Productos nicolas</label>
+              <label for="imagenes" class="col -sm-2 col-form-label">Imagenes de los Productos</label>
               <div class="col-sm-7">
-              <input type="file" id="imagenes" name="imagenes" class="form-control" placeholder="{{ __('Imagen del Producto...') }}">
+              <input type="file" id="imagenes" name="imagenes" class="form-control" accept="image/*">
               </div>
             </div>
           </div>
@@ -56,7 +56,6 @@
             <a href="{{ route('product.index') }}" class="btn btn-sm btn-success mr-3"> Volver </a>
               <button type="submit" class="btb btn-primary"> Guardar</button>
             </div>
-
         </div>
         </form>
       </div>
