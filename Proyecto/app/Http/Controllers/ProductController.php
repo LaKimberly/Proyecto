@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductEditRequest;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-       $products = Product::paginate(5);
+        abort_if(Gate::denies('product_index'), 403);
+        $products = Product::paginate(5);
         return view('Productviews.index', compact('products'));
     }
 
@@ -25,6 +29,7 @@ class ProductController extends Controller
      */
     public function create()
     {
+        abort_if(Gate::denies('product_create'), 403);
         return view('Productviews.create');
     }
 
@@ -34,36 +39,15 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductCreateRequest $request)
     {
-
-        //  $validator = validator::make($request->all(),[
-        //      // 'productName' => 'required|productName|unique:products|min:4|max:30|unique:products',
-        //      'productName' => 'required|productName|unique:products',
-        //      'productPrice' => 'required',
-        //      // 'ProductDescription' => '',
-        //      // 'productQualication' => '',
-        //      'img' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        //  ]);
-        //  if($validator ->fails()){
-        //      return back()
-        //      ->withInput()
-        //      ->with('ErrorInsert','Favor de llenar los datos correctamente')
-        //      ->withErrors($validator);
-        //  }
-        //  else{
-
-            // $imagen = $request -> hasFile('img');
-            //  $nombre= time().'.'.$imagen->getClientOriginalExtension();
-
-             $ruta_imagen = $request['imagenes']->store('productos', 'public');
-
-
+             
              $product = new Product();
              $product->productName=$request['productName'];
              $product->productPrice=$request['productPrice'];
              $product->ProductDescription=$request['ProductDescription'];
              $product->productQualication=$request['productQualication'];
+             $ruta_imagen = $request['imagenes']->store('productos', 'public');
              $product->img=$ruta_imagen;
              $product->save();
              return redirect()-> route('product.show', $product->id)->with('success', ' Su producto fue creado correctamente');
@@ -79,6 +63,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        abort_if(Gate::denies('product_show'), 403);
       //  $product = Product::findOrfail($id);
 
          return view('Productviews.show', compact ('product'));
@@ -94,6 +79,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        abort_if(Gate::denies('product_edit'), 403);
         return view('Productviews.edit',compact('product'));
     }
 
@@ -104,7 +90,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(ProductEditRequest $request, Product $product)
 
     {
         if($request['imagenes']){
@@ -130,22 +116,23 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-     $product->delete();
-     return back()->with('succes','usuario eliminado correctamente');
+        abort_if(Gate::denies('product_destroy'), 403);
+        $product->delete();
+        return back()->with('succes','usuario eliminado correctamente');
     }
 
 
     public function menu()
     {
        $products = Product::paginate(6);
-        return view('Productviews.menu', compact('products'));
+        return view('cart.menu', compact('products'));
     }
 
 
     public function carrito(Product $product)
     {
         // $products = Product::paginate(6);
-        return view('Productviews.carrito', compact('product'));
+        return view('cart.carrito', compact('product'));
     }
 
 }

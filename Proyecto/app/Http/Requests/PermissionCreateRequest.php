@@ -24,7 +24,8 @@ class PermissionCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:permissions|max:120|min:5',
+            'name' => 'required|unique:permissions|max:120|min:5|
+            regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
         ];
     }
 
@@ -33,7 +34,8 @@ class PermissionCreateRequest extends FormRequest
             'name.required' => 'El campo Nombre es obligatorio',
             'name.min' => 'El campo Nombre debe tener al menos 5 caracteres.',
             'name.max' => 'El campo Nombre debe ser menor que 120 caracteres.',
-            'name.unique' => 'Este Nombre ya está siendo utilizado. Por favor ingrese uno diferente',
+            'name.unique' => 'Este Nombre ya está siendo utilizado. Por favor ingrese uno diferente.',
+            'name.regex' => 'El formato del campo nombre no es válido.',
         ];
     }
 }

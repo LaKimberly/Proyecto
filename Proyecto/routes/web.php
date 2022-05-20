@@ -17,46 +17,19 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 //Normal
-// Auth::routes();
+Auth::routes();
 
+Route::get('storage-link', function(){
+    Artisan::call('storage:link');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin/create', [App\Http\Controllers\AdministradorController::class, 'create']);
-Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.register');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Producto
-// crear
-Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
-Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.register');
-
-// ver
-Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
-
-//editar
-Route::get('/product/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
-
-// show
-Route::get('/product/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
-
-// Actualizar
-Route::put('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
-
-
-// Eliminar
-Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
-
-// menu
-Route::get('/menu', [App\Http\Controllers\ProductController::class, 'menu'])->name('product.menu');
-
-// carrito
-Route::get('/carrito', [App\Http\Controllers\ProductController::class, 'carrito'])->name('product.carrito');
-
-Route::post('/admin/store', [App\Http\Controllers\AdministradorController::class, 'store'])->name('admin.store');
-
-
-//users
+Route::get('/menu', [App\Http\Controllers\CartController::class, 'shop'])->name('product.menu');
 
 Route::group(['middleware' => 'auth'], function(){
+    Route::get('/menu', [App\Http\Controllers\CartController::class, 'shop'])->name('product.menu');
     Route::get('/user/create', [App\Http\Controllers\UserController::class, 'create'])->name('user.create');
     Route::post('/user', [App\Http\Controllers\UserController::class, 'store'])->name('user.store');
     Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('user.index');
@@ -72,4 +45,28 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class );
     Route::resource('roles', App\Http\Controllers\RoleController::class );
+
+// Producto
+    // crear
+    Route::get('/product/create', [App\Http\Controllers\ProductController::class, 'create'])->name('product.create');
+    Route::post('/product/store', [App\Http\Controllers\ProductController::class, 'store'])->name('product.register');
+    // ver
+    Route::get('/product/index', [App\Http\Controllers\ProductController::class, 'index'])->name('product.index');
+    //editar
+    Route::get('/product/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
+    // show
+    Route::get('/product/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('product.show');
+    // Actualizar
+    Route::put('/product/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
+    // Eliminar
+    Route::delete('/product/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('product.delete');
+
+    // carrito
+    //Route::get('/shop', [App\Http\Controllers\CartController::class, 'shop'])->name('cart.shop');
+    Route::get('/cart', [App\Http\Controllers\CartController::class, 'cart'])->name('cart.index');
+    Route::post('/add', [App\Http\Controllers\CartController::class, 'add'])->name('cart.store');
+    Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+    Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+    Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
+
 });

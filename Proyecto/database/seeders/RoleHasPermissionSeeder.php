@@ -25,9 +25,7 @@ class RoleHasPermissionSeeder extends Seeder
             return substr($permission->name, 0, 5) != 'user_' && 
             substr($permission->name, 0, 5) != 'role_'&& 
             substr($permission->name, 0, 11) != 'permission_'&& //el número se toma dependiendo del tamaño de la cadena permission_ = 11 caracteres
-            substr($permission->name, 0, 12) != 'product_edit'&& 
-            substr($permission->name, 0, 14) != 'product_create'&& 
-            substr($permission->name, 0, 15) != 'product_destroy'&&
+            substr($permission->name, 0, 8) != 'product_'&&
             substr($permission->name, 0, 9) != 'delivery_'; 
         });
         Role::findOrFail(2)->permissions()->sync($user_permissions);

@@ -25,7 +25,8 @@ class PermissionEditRequest extends FormRequest
     {
         $permission = $this->route('permission');
         return [
-            'name' => 'required|max:120|min:5|unique:permissions,name,' . $permission->id,
+            'name' => 'required|max:120|min:5|regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð _]+$/
+            |unique:permissions,name,' . $permission->id,
         ];
     }
 
@@ -35,6 +36,7 @@ class PermissionEditRequest extends FormRequest
             'name.min' => 'El campo Nombre debe tener al menos 5 caracteres.',
             'name.max' => 'El campo Nombre debe ser menor que 120 caracteres.',
             'name.unique' => 'Este nombre ya está siendo utilizado. Por favor ingrese uno diferente',
+            'name.regex' => 'El formato del campo nombre no es válido.',
         ];
     }
 }

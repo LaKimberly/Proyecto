@@ -26,8 +26,9 @@ class UserEditRequest extends FormRequest
         $user = $this->route('user');
         return [
             'address' => 'required|min:8|max:255',
-            'username' => 'required|min:4|max:48',
-            'phonenumber' => 'required|min:10|max:13|unique:users,phonenumber,' . $user->id,
+            'username' => 'required|min:4|max:48|
+            regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]+$/',
+            'phonenumber' => 'required|min:10|regex:/^(\+57)*(3)([0-2])([0-9])[0-9]{7}$/|max:13|unique:users,phonenumber,' . $user->id,
             'email' => 'required|email|unique:users,email,' . request()->route('user')->id,
             'password' => 'sometimes', 'min:4', 'max:30',
         ];
@@ -41,12 +42,15 @@ class UserEditRequest extends FormRequest
             'username.required' => 'El campo Nombre es obligatorio',
             'username.min' => 'El campo Nombre debe tener al menos 4 caracteres.',
             'username.max' => 'El campo Nombre debe ser menor que 49 caracteres.',
+            'username.regex' => 'El formato del campo nombre no es válido.',
             'phonenumber.required' => 'El campo Número de teléfono es obligatorio',
             'phonenumber.min' => 'El campo Número de teléfono debe tener al menos 10 caracteres.',
             'phonenumber.max' => 'El campo Número de teléfono debe ser menor que 14 caracteres.',
             'phonenumber.unique' => 'Este número de teléfono ya está siendo utilizado. Por favor ingrese uno diferente',
+            'phonenumber.regex' => 'El formato del campo número de teléfono no es válido.',
             'email.required' => 'El campo Email es obligatorio',
             'email.unique' => 'Este email ya está siendo utilizado. Por favor ingrese uno diferente',
+            'password.required' => 'El campo Contraseña es obligatorio',
             'password.min' => 'El campo Contraseña debe tener al menos 4 caracteres.',
             'password.max' => 'El campo Contraseña debe ser menor que 30 caracteres.',
         ];

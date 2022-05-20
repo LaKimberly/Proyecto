@@ -7,15 +7,16 @@
   -->
   <div class="logo">
     <a href="{{ route('home') }}" class="simple-text logo-normal">
-      {{ __('Apetitos') }}
+    <img class="logo-normal" src="/img/logo.png" class="avatar" width="40" height="40">
+    {{ __('Apetitos') }}
     </a>
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('home') }}">
-          <i class="material-icons">dashboard</i>
-            <p>{{ __('Dashboard') }}</p>
+      <li class="nav-item{{ $activePage == 'menu' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('product.menu') }}">
+          <i class="material-icons">restaurant_menu</i>
+            <p>{{ __('Menu') }}</p>
         </a>
       </li>
       @can('permission_index')
@@ -54,13 +55,15 @@
         </a>
       </li>
       @endcan
-      <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">library_books</i>
-            <p>{{ __('Typography') }}</p>
+      @can('product_index')
+      <li class="nav-item{{ $activePage == 'Productos' ? ' active' : '' }}">
+        <a class="nav-link" href="/product/index">
+          <i class="material-icons">inventory</i>
+            <p>{{ __('Productos') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
+      @endcan
+      <!-- <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>
           <p>{{ __('Icons') }}</p>
@@ -77,8 +80,8 @@
           <i class="material-icons">notifications</i>
           <p>{{ __('Notifications') }}</p>
         </a>
-      </li>
-      <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
+      </li> -->
+      <!-- <li class="nav-item{{ $activePage == 'language' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">language</i>
           <p>{{ __('RTL Support') }}</p>

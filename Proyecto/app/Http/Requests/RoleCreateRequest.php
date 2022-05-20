@@ -24,7 +24,8 @@ class RoleCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles|max:90|min:3',
+            'name' => 'required|unique:roles|max:90|min:3|
+            regex:/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð _]+$/',
         ];
     }
 
@@ -34,6 +35,7 @@ class RoleCreateRequest extends FormRequest
             'name.min' => 'El campo Nombre debe tener al menos 3 caracteres.',
             'name.max' => 'El campo Nombre debe ser menor que 90 caracteres.',
             'name.unique' => 'Este Nombre ya está siendo utilizado. Por favor ingrese uno diferente',
+            'name.regex' => 'El formato del campo nombre no es válido.',
         ];
     }
 }

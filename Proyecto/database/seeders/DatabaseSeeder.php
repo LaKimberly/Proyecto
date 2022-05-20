@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             RoleHasPermissionSeeder::class,
             UserSeeder::class,
+            ProductsTableSeeder::class,
         ]);
     }
 }

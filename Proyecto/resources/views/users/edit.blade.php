@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]{2,48}" title="Los nombres no pueden contener números ni caracteres especiales" autofocus>
+                                        <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}" title="Los nombres no pueden contener números ni caracteres especiales" autofocus>
                                         @if ($errors->has('username'))
                                         <span class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
                                         @endif
@@ -44,7 +44,7 @@
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Número de teléfono</label>
                                     <div class="col-sm-7">
-                                        <input type="tel" class="form-control" name="phonenumber" value="{{ old('phonenumber', $user->phonenumber) }}" pattern="(^(\+57)*(3)([0-2])([0-9])[0-9]{7}$)|(^(60)([1-8])[0-9]{7}$)" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606" autofocus>
+                                        <input type="tel" class="form-control" name="phonenumber" value="{{ old('phonenumber', $user->phonenumber) }}" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606" autofocus>
                                         @if ($errors->has('phonenumber'))
                                         <span class="error text-danger" for="input-phonenumber">{{ $errors->first('phonenumber') }}</span>
                                         @endif
