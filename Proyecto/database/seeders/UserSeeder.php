@@ -24,5 +24,15 @@ class UserSeeder extends Seeder
         ]);
 
         $user->assignRole('Admin');
+
+        $normal = User::create([
+            'address' => 'Barrio La Fachada Mz 35 # 5',
+            'email' => 'afescobarv@uqvirtual.edu.co',
+            'username' => 'Andres Escobar',
+            'phonenumber' => '3005293555',
+            'password' => bcrypt('1234'),
+        ]);
+
+        $normal->assignRole('User');
     }
 }

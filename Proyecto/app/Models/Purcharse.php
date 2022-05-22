@@ -18,4 +18,14 @@ class Purcharse extends Model
         'purcharsePrice',
         'purcharseType',
     ];
+
+    //Relación de muchos a muchos
+    public function products (){
+        return $this->belongsToMany('App\Models\Product');
+    }
+
+    //Relacion de uno a muchos
+    public function user (){
+        return $this->belongsTo('App\Models\User');
+    }
 }

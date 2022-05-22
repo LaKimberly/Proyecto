@@ -21,4 +21,9 @@ class Product extends Model
         'image'
         
     ];
+
+    //Relación de muchos a muchos
+    public function purcharses (){
+        return $this->belongsToMany('App\Models\Purcharse');
+    }
 }

@@ -63,13 +63,13 @@
         </a>
       </li>
       @endcan
-      <!-- <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
-          <i class="material-icons">bubble_chart</i>
-          <p>{{ __('Icons') }}</p>
+      <li class="nav-item{{ $activePage == 'purcharses' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('purcharses.index') }}">
+          <i class="material-icons">paid</i>
+          <p>{{ __('Ventas') }}</p>
         </a>
       </li>
-      <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
+      <!-- <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">location_ons</i>
             <p>{{ __('Maps') }}</p>

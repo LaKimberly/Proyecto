@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class );
     Route::resource('roles', App\Http\Controllers\RoleController::class );
+    Route::resource('purcharses', App\Http\Controllers\PurcharseController::class );
 
 // Producto
     // crear
@@ -68,5 +69,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/update', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
     Route::post('/remove', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
     Route::post('/clear', [App\Http\Controllers\CartController::class, 'clear'])->name('cart.clear');
+
+    Route::get('/purcharse/create', [App\Http\Controllers\PurcharseController::class, 'create'])->name('purcharses.create');
+    Route::post('/purcharse', [App\Http\Controllers\PurcharseController::class, 'store'])->name('purcharses.store');
+    Route::get('/purcharse', [App\Http\Controllers\PurcharseController::class, 'index'])->name('purcharses.index');
+    Route::get('/purcharse/{purcharse}', [App\Http\Controllers\PurcharseController::class, 'show'])->name('purcharses.show');
+    Route::get('/purcharse/{purcharse}/edit', [App\Http\Controllers\PurcharseController::class, 'edit'])->name('purcharses.edit');
+    Route::put('/purcharse/{purcharse}', [App\Http\Controllers\PurcharseController::class, 'update'])->name('purcharses.update');
+    Route::delete('/purcharse/{purcharse}', [App\Http\Controllers\PurcharseController::class, 'destroy'])->name('purcharses.delete');
 
 });

@@ -1,4 +1,4 @@
-@extends('layouts.main', [ 'activePage' => 'menu', 'titlePage' => __('Productos')])
+@extends('layouts.main', [ 'activePage' => 'menu', 'titlePage' => __('Menú del día')])
 @section('content')
 <div class="content">
     <div class="container-fluid">
@@ -21,7 +21,7 @@
                                         <input type="hidden" value="{{ $product->productName }}" id="productName" name="productName">
                                         <input type="hidden" value="{{ $product->productPrice }}" id="productPrice" name="productPrice">
                                         <input type="hidden" value="{{ $product->ProductDescription }}" id="ProductDescription" name="ProductDescription">
-                                        <input type="hidden" value="{{ $product->image }}" id="image" name="image">
+                                        <input type="hidden" value="{{ $product->img }}" id="img" name="img">
                                         <input type="hidden" value="1" id="quantity" name="quantity">
                                         <div class="card-title col text-center">
                                             <button class="btn btn-danger btn-sm" class="tooltip-test" title="Agregar producto al carrito">

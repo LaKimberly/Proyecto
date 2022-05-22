@@ -1,0 +1,66 @@
+@extends('layouts.main', ['activePage' => 'purcharses', 'titlePage' => 'Editar venta'])
+@section('content')
+<div class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <form method="POST" action="{{ route('purcharses.update', $purcharse->id) }}" class="form-horizontal">
+          @csrf
+          @method('PUT')
+          <div class="card">
+            <!--Header-->
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">Editar venta</h4>
+              <p class="card-category">Editar productos de la venta</p>
+            </div>
+            <!--End header-->
+            <!--Body-->
+            <div class="card-body">
+              <div class="row">
+                <label for="name" class="col-sm-2 col-form-label">Productos</label>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="profile">
+                        <table class="table">
+                          <tbody>
+                            @foreach ($products as $id => $product)
+                            <tr>
+                              <td>
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="products[]"
+                                      value="{{ $id }}" {{ $purcharse->products->contains($id) ? 'checked' : '' }}>
+                                    <span class="form-check-sign">
+                                      <span class="check" value=""></span>
+                                    </span>
+                                  </label>
+                                </div>
+                              </td>
+                              <td>
+                                {{ $product}}
+                              </td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--End body-->
+            <!--Footer-->
+            <div class="card-footer ml-auto mr-auto">
+              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <a href="{{ route('purcharses.index')}}" class="btn btn-primary btn-success ml-3">Cancelar</a>
+            </div>
+          </div>
+          <!--End footer-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection

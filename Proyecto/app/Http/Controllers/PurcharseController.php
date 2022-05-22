@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\Purcharse;
+use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class PurcharseController extends Controller
 {
@@ -15,7 +18,9 @@ class PurcharseController extends Controller
     public function index()
     {
         //
-        dd('entro');
+        abort_if(Gate::denies('purcharse_index'), 403);
+        $purcharses = Purcharse::paginate(5);
+        return view('purcharses.index', compact('purcharses'));
     }
 
     /**
@@ -26,6 +31,9 @@ class PurcharseController extends Controller
     public function create()
     {
         //
+        abort_if(Gate::denies('purcharse_create'), 403);
+        $products = Product::all()->pluck('productName', 'id');
+        return view('purcharses.create', compact('products'));
     }
 
     /**
@@ -36,7 +44,16 @@ class PurcharseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $purcharse = Purcharse::create();
+        $purcharse->user_id=Auth::user()->id;
+        $purcharse->products()->sync($request->input('products', []));
+        $aux = 0;
+        foreach($purcharse->products as $product){
+            $aux += $product->productPrice;
+        }
+        $purcharse->purcharsePrice=$aux;
+        $purcharse->save();
+        return redirect()->route('purcharses.index')->with('success', 'Venta realizada correctamente');
     }
 
     /**
@@ -59,6 +76,10 @@ class PurcharseController extends Controller
     public function edit(Purcharse $purcharse)
     {
         //
+        abort_if(Gate::denies('purcharse_edit'), 403);
+        $products = Product::all()->pluck('productName','id');
+        $purcharse->load('products');
+        return view('purcharses.edit', compact('purcharse', 'products'));
     }
 
     /**
@@ -71,6 +92,14 @@ class PurcharseController extends Controller
     public function update(Request $request, Purcharse $purcharse)
     {
         //
+        $purcharse->products()->sync($request->input('products', []));
+        $aux = 0;
+        foreach($purcharse->products as $product){
+            $aux += $product->productPrice;
+        }
+        $purcharse->purcharsePrice=$aux;
+        $purcharse->save();
+        return redirect()->route('purcharses.index')->with('success', 'Venta actualizada correctamente');
     }
 
     /**
@@ -82,5 +111,8 @@ class PurcharseController extends Controller
     public function destroy(Purcharse $purcharse)
     {
         //
+        abort_if(Gate::denies('purcharse_destroy'), 403);
+        $purcharse->delete();
+        return back()->with('success', 'Venta eliminada correctamente');
     }
 }
