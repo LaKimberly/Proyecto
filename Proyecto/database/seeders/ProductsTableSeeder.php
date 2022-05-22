@@ -33,7 +33,7 @@ class ProductsTableSeeder extends Seeder
 
         Product::create([
             'productName' => 'Arroz mixto',
-            'productPrice' => 5000,
+            'productPrice' => 5300,
             'ProductDescription' => 'Plato de arroz mixto con carnes picadas y maduritos',
             'productQualication' => 4,
             'img' => '/productos/arrozMixto.jpg',
