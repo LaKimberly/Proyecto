@@ -21,11 +21,6 @@
                                         <span class="error text-danger" for="input-address">{{ $errors->first('address') }}</span>
                                         @endif
                                     </div>
-                                    <!-- @if ($errors->has('address'))
-                                    <div id="address-error" class="error text-danger pl-3" for="address" style="display: block;">
-                                        <strong>{{ $errors->first('address') }}</strong>
-                                    </div>
-                                    @endif -->
                                 </div>
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Nombre</label>
@@ -35,11 +30,6 @@
                                         <span class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
                                         @endif
                                     </div>
-                                    <!-- @if ($errors->has('username'))
-                                    <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </div>
-                                    @endif -->
                                 </div>
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Número de teléfono</label>
@@ -49,11 +39,6 @@
                                         <span class="error text-danger" for="input-phonenumber">{{ $errors->first('phonenumber') }}</span>
                                         @endif
                                     </div>
-                                    <!-- @if ($errors->has('phonenumber'))
-                                    <div id="phonenumber-error" class="error text-danger pl-3" for="phonenumber" style="display: block;">
-                                        <strong>{{ $errors->first('phonenumber') }}</strong>
-                                    </div>
-                                    @endif -->
                                 </div>
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Email</label>
@@ -63,11 +48,6 @@
                                         <span class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
-                                    <!-- @if ($errors->has('email'))
-                                    <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </div>
-                                    @endif -->
                                 </div>                              
                                 <div class="row">
                                     <label for="name" class="col-sm-2 col-form-label">Contraseña</label>
