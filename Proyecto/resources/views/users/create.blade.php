@@ -12,15 +12,6 @@
                             <p class="card-category">Ingresar datos</p>
                         </div>
                         <div class="card-body">
-                            <!-- @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif -->
                             <div class="row">
                                 <label for="name" class="col-sm-2 col-form-label">Dirección</label>
                                 <div class="col-sm-7">
@@ -33,7 +24,6 @@
                             <div class="row">
                                 <label for="name" class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-7">
-                                <!-- pattern="[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ]" -->
                                     <input type="text" class="form-control" name="username" placeholder="Ingrese su nombre" value="{{old('username')}}"  title="Los nombres no pueden contener números ni caracteres especiales"  autofocus>
                                     @if ($errors->has('username'))
                                     <span class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
@@ -43,7 +33,6 @@
                             <div class="row">
                                 <label for="name" class="col-sm-2 col-form-label">Número de teléfono</label>
                                 <div class="col-sm-7">
-                                    <!-- pattern="(^(60)([1-8])[0-9]{7}$)" -->
                                     <input type="tel" class="form-control" name="phonenumber" placeholder="Ingrese su número de teléfono" value="{{old('phonenumber')}}" title="Un número de teléfono no puede contener espacios en blanco. Si es un número de teléfono celular es opcional escribir la extensión +57. Un número de telefono fijo debe contener la extensión 606"  autofocus>
                                     @if ($errors->has('phonenumber'))
                                     <span class="error text-danger" for="input-phonenumber">{{ $errors->first('phonenumber') }}</span>
