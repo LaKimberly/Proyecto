@@ -51,7 +51,6 @@ class ProductController extends Controller
              $product->img=$ruta_imagen;
              $product->save();
              return redirect()-> route('product.show', $product->id)->with('success', ' Su producto fue creado correctamente');
-        //  }
 
     }
 
@@ -64,8 +63,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         abort_if(Gate::denies('product_show'), 403);
-      //  $product = Product::findOrfail($id);
-
          return view('Productviews.show', compact ('product'));
 
 
@@ -131,7 +128,6 @@ class ProductController extends Controller
 
     public function carrito(Product $product)
     {
-        // $products = Product::paginate(6);
         return view('cart.carrito', compact('product'));
     }
 
