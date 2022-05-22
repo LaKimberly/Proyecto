@@ -54,10 +54,10 @@ class UserController extends Controller
         //     'password' => bcrypt($request->input('passowrd')),
         // ]);
         $data=request()->validate([
-            'address' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string'],
+            'username' => ['required', 'string'],
             'phonenumber' => ['required', 'string', 'min:10','max:13', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', 'string', 'min:4', 'max:30'],
         ]);
 
@@ -108,18 +108,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UserEditRequest $request, User $user){
-        // $user=User::FindOrFail($id);
         $data = $request->only('address', 'username', 'email', 'phonenumber');
         $password=$request->input('password');
         if($password)
             $data['password'] = bcrypt($password);
-        // if(trim($request->password)==''){
-        //     $data=$request->except('password');
-        // }else{
-        //     $data=$request->all();
-        //     $data['password']=bcrypt($request->password);
-        // }
-
         $user->update($data);
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
