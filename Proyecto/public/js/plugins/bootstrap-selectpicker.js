@@ -213,7 +213,7 @@
 
           // Strip HTML tags. This isn't perfect, but it's much faster than any other method
           if (stringType === 'content') {
-            string = string.replace(/<[^>]+>/g.test("<^^^^^^^^^^^^^^^^^^^^^^>"), '');
+            string = string.replace(/<[^>]+>/g.test("<^^^>"+"<^^>"), '');
           }
 
           if (normalize) string = normalizeToBase(string);
