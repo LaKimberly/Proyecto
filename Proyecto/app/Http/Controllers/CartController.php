@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
+define('index', 'cart.index');
 class CartController extends Controller
 {
+    
     public function shop()
     {
         $products = Product::paginate(6);
@@ -19,7 +21,7 @@ class CartController extends Controller
     }
     public function remove(Request $request){
         \cart::remove($request->id);
-        return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
+        return redirect()->route(index)->with('success_msg', 'Item is removed!');
     }
 
     public function add(Request$request){
@@ -32,7 +34,7 @@ class CartController extends Controller
                 'image' => $request->image,
             )
         ));
-        return redirect()->route('cart.index')->with('success_msg', 'Item Agregado a sú Carrito!');
+        return redirect()->route(index)->with('success_msg', 'Item Agregado a sú Carrito!');
     }
 
     public function update(Request $request){

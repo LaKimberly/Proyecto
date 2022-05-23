@@ -63,12 +63,14 @@
         </a>
       </li>
       @endcan
+      @can('purcharse_index')
       <li class="nav-item{{ $activePage == 'purcharses' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('purcharses.index') }}">
           <i class="material-icons">paid</i>
           <p>{{ __('Ventas') }}</p>
         </a>
       </li>
+      @endcan
       <!-- <li class="nav-item{{ $activePage == 'map' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">location_ons</i>
