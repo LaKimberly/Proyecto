@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Collection;
 class PurcharseTest extends TestCase
 {
     /**
-     * A basic unit test example.
+     * A basic unit test to purcharse has many products.
      *
      * @return void
      */

@@ -42,7 +42,7 @@ class PermissionController extends Controller
     public function store(PermissionCreateRequest $request)
     {
         Permission::create($request->only('name'));
-        return redirect()->route('permissions.index')->with('success', 'Permiso creado correctamente');
+        return redirect()->route('permissions.index', 201)->with('success', 'Permiso creado correctamente');
     }
 
     /**

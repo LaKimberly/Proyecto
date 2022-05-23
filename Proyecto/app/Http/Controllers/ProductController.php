@@ -50,7 +50,7 @@ class ProductController extends Controller
              $ruta_imagen = $request['imagenes']->store('productos', 'public');
              $product->img=$ruta_imagen;
              $product->save();
-             return redirect()-> route('product.show', $product->id)->with('success', ' Su producto fue creado correctamente');
+             return redirect()-> route('product.show', $product->id, 201)->with('success', ' Su producto fue creado correctamente');
 
     }
 

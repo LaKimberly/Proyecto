@@ -14,11 +14,11 @@ class CartController extends Controller
     }
 
     public function cart()  {
-        $cartCollection = \Cart::getContent();
+        $cartCollection = \cart::getContent();
         return view('cart.cart', compact('cartCollection'));
     }
     public function remove(Request $request){
-        \Cart::remove($request->id);
+        \cart::remove($request->id);
         return redirect()->route('cart.index')->with('success_msg', 'Item is removed!');
     }
 

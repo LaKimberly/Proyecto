@@ -42,17 +42,6 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(UserCreateRequest $request){
-        // $request->validate([
-        //     'address' => 'required|min:8|max:255',
-        //     'username' => 'required|min:4',
-        //     'phonenumber' => 'required|min:10|max:13|unique:users',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required',
-        // // ]);
-        // $user = User::create($request->only('address', 'email', 'username', 'phonenumber')
-        // + [
-        //     'password' => bcrypt($request->input('passowrd')),
-        // ]);
         $data=request()->validate([
             'address' => ['required', 'string'],
             'username' => ['required', 'string'],
@@ -70,7 +59,7 @@ class UserController extends Controller
         ]);
         $roles = $request->input('roles', []);
         $user->syncRoles($roles);
-        return redirect()->route('user.show', $user)->with('success', 'Usuario creado correctamente');
+        return redirect()->route('user.show', $user, 201)->with('success', 'Usuario creado correctamente');
     }
 
     /**
